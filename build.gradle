@@ -1,0 +1,37 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.0.1'
+	id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group = 'com.es.rgutialo'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation group: 'com.google.code.gson', name: 'gson', version: '2.10'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation group: 'org.eclipse.paho', name: 'org.eclipse.paho.client.mqttv3', version: '1.2.5'
+	implementation group: 'javax.validation', name: 'validation-api', version: '2.0.1.Final'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.1'
+	testImplementation group: 'org.mockito', name: 'mockito-junit-jupiter', version: '4.11.0'
+	testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.23.1'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
